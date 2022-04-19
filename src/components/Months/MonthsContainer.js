@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Option from './../Utilities/Option.js'
+import ProduceListing from './ProduceListing.js';
 
 const availableProduce = [  
   {  
@@ -270,13 +271,23 @@ const availableProduce = [
     ]
   }
 ];
+
 function MonthsContainer() {
   return (
-    <Form.Select aria-label="Select month">
-      {availableProduce.map((month, index) =>
-        <Option val={month.month} key={index} />
-      )}
-    </Form.Select>
+    <React.Fragment>
+      <Form.Select aria-label="Select month">
+        {availableProduce.map((month, index) =>
+          <Option val={month.month} key={index} />
+        )}
+      </Form.Select>
+      <div className="w-25 h-25" idName="available-produce">
+        
+        {availableProduce.map((month, index) => 
+          <ProduceListing selections={month.selection}  
+          key={index}/>
+        )}
+      </div>
+    </React.Fragment>
   );
 }
 
