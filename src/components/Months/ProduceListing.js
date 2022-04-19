@@ -4,7 +4,7 @@ function ProduceListing(props) {
   return (
     <ul>
       {props.selections.map((produce, index) => 
-        <li idName={index}>{produce}</li>
+        <li id={index} key={index}>{produce}</li>
       )}
     </ul>
   );

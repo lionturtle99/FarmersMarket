@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 function Option(props) {
   return (
-      <option>{props.val}</option>
+      <option value={props.value}>{props.text}</option>
   );
 }
 
 Option.propTypes = {
-  val: PropTypes.string
+  text: PropTypes.string,
+  value: PropTypes.number
 }
 
 export default Option;

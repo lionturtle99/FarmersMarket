@@ -277,10 +277,10 @@ function MonthsContainer() {
     <React.Fragment>
       <Form.Select aria-label="Select month">
         {availableProduce.map((month, index) =>
-          <Option val={month.month} key={index} />
+          <Option key={index} text={month.month} value={index} />
         )}
       </Form.Select>
-      <div className="w-25 h-25" idName="available-produce">
+      <div className="w-25 h-25">
         
         {availableProduce.map((month, index) => 
           <ProduceListing selections={month.selection}  
