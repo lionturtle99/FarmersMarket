@@ -272,23 +272,34 @@ const availableProduce = [
   }
 ];
 
-function MonthsContainer() {
-  return (
-    <React.Fragment>
-      <Form.Select aria-label="Select month">
-        {availableProduce.map((month, index) =>
-          <Option key={index} text={month.month} value={index} />
-        )}
-      </Form.Select>
-      <div className="w-25 h-25">
-        
-        {availableProduce.map((month, index) => 
-          <ProduceListing selections={month.selection}  
-          key={index}/>
-        )}
-      </div>
-    </React.Fragment>
-  );
+class MonthsContainer extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedValue: 0
+    };
+  }
+  
+  changeHandler(e) {
+    this.setState({selectedValue: e.target.value})
+  };
+
+  render() {
+    let selectedValue = this.state.selectedValue;
+    return (
+      <React.Fragment>
+        <Form.Select aria-label="Select month" onChange={(e) => this.changeHandler(e)}>
+          {availableProduce.map((month, index) =>
+            <Option key={index} text={month.month} value={index} />
+          )}
+        </Form.Select>
+        <div className="h-25">
+            <ProduceListing selections={availableProduce[selectedValue].selection} />
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default MonthsContainer;
